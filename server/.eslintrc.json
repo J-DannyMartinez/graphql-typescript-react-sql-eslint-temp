@@ -1,19 +1,51 @@
 {
-  "env": {
-    "browser": true,
-    "commonjs": true,
-    "es2021": true
-  },
-  "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
-  "parser": "@typescript-eslint/parser",
-  "parserOptions": {
-    "ecmaVersion": 12
-  },
-  "plugins": ["@typescript-eslint"],
-  "rules": {
-    "semi": ["error", "always"],
-    "quotes": ["error", "double"],
-    "no-empty": "warn",
-    "@typescript-eslint/no-var-requires": 0
-  }
+	"env": {
+		"browser": true,
+		"commonjs": true,
+		"es2021": true
+	},
+	"extends": [
+		"airbnb",
+		"prettier",
+		"eslint:recommended",
+		"plugin:@typescript-eslint/recommended",
+		"plugin:@typescript-eslint/recommended-requiring-type-checking",
+		"plugin:node/recommended"
+	],
+	"parser": "@typescript-eslint/parser",
+	"parserOptions": {
+		"ecmaVersion": 12,
+		"project": ["./tsconfig.json"]
+	},
+	"plugins": [
+		"@typescript-eslint",
+		"prettier",
+		"@graphql-eslint",
+		"eslint-plugin-graphql"
+	],
+	"rules": {
+		"@typescript-eslint/no-var-requires": 0,
+		"@typescript-eslint/no-misused-promises": "error",
+		"no-unused-vars": "warn",
+		"no-console": "off",
+		"spaced-comment": "off",
+		"prettier/prettier": "error",
+		"func-names": "off",
+		"no-process-exit": "off",
+		"object-shorthand": "off",
+		"class-methods-use-this": "off",
+		"no-var": "error",
+		"default-case": "error",
+		"no-empty-function": "error",
+		"no-multi-spaces": "error",
+		"strict": "warn",
+		"prefer-arrow-callback": "error",
+		"arrow-parens": ["error", "as-needed"],
+		"camelcase": ["error"],
+		"comma-dangle": ["warn", "always"],
+		"capitalized-comments": "warn",
+		"arrow-body-style": "error",
+		"arrow-spacing": "error",
+		"prefer-template": "error"
+	}
 }
