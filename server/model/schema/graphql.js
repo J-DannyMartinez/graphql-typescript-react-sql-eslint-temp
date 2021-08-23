@@ -1,15 +1,13 @@
-const { ApolloServer, gql } = require("apollo-server-express");
-
-const typeDefs = gql`
-  type Query {
-    hello: String
-  }
-`;
-
-const resolvers = {
-  Query: {
-    hello: () => "Hello world!",
-  }
+"use strict";
+var __makeTemplateObject = (this && this.__makeTemplateObject) || function (cooked, raw) {
+    if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
+    return cooked;
 };
-
-module.exports = { typeDefs, resolvers };
+var _a = require("apollo-server-express"), ApolloServer = _a.ApolloServer, gql = _a.gql;
+var typeDefs = gql(__makeTemplateObject(["\n  type Query {\n    hello: String\n  }\n"], ["\n  type Query {\n    hello: String\n  }\n"]));
+var resolvers = {
+    Query: {
+        hello: function () { return "Hello world!"; },
+    }
+};
+module.exports = { typeDefs: typeDefs, resolvers: resolvers };
