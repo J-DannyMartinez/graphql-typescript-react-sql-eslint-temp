@@ -6,8 +6,9 @@
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"start": "node server.js",
-		"dev": "nodemon server.js",
-		"lint": "eslint ./"
+		"dev": "concurrently \"nodemon server.js\" \"npm run lint\"",
+		"lint": "eslint ./",
+		"ts": "tsc -w"
 	},
 	"keywords": [],
 	"author": "",
@@ -15,6 +16,7 @@
 	"dependencies": {
 		"apollo-server-express": "^3.1.2",
 		"axios": "^0.21.1",
+		"concurrently": "^6.2.1",
 		"cors": "^2.8.5",
 		"express": "^4.17.1"
 	},
