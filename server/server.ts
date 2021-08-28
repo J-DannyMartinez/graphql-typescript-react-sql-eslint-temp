@@ -1,10 +1,12 @@
 'use strict';
 
-const express = require('express');
+import express from 'express';
 const { ApolloServer, gql } = require('apollo-server-express');
 const { typeDefs, resolvers } = require('./model/schema/graphql');
+const morgan = require('morgan');
 
 const app = express();
+app.use(morgan('tiny'));
 
 async function startApolloServer() {
 	const server = new ApolloServer({ typeDefs, resolvers });
@@ -20,6 +22,4 @@ async function startApolloServer() {
 
 startApolloServer();
 
-//morgan
-
-console.log('yossrddr');
+console.log('yos');

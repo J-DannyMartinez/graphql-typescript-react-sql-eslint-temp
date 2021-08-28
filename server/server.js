@@ -35,10 +35,16 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var express = require('express');
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var express_1 = __importDefault(require("express"));
 var _a = require('apollo-server-express'), ApolloServer = _a.ApolloServer, gql = _a.gql;
 var _b = require('./model/schema/graphql'), typeDefs = _b.typeDefs, resolvers = _b.resolvers;
-var app = express();
+var morgan = require('morgan');
+var app = express_1.default();
+app.use(morgan('tiny'));
 function startApolloServer() {
     return __awaiter(this, void 0, void 0, function () {
         var server;
@@ -62,4 +68,4 @@ function startApolloServer() {
     });
 }
 startApolloServer();
-console.log('yossrddr');
+console.log('yos');
