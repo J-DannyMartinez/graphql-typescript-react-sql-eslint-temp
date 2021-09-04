@@ -2,7 +2,7 @@
 
 import express from 'express';
 import { ApolloServer, gql } from 'apollo-server-express';
-import { typeDefs, resolvers } from './model/schema/graph.js';
+import { typeDefs, resolvers } from './model/schema/graph';
 const morgan = require('morgan');
 
 const app: any = express();
@@ -24,4 +24,4 @@ async function startApolloServer() {
 
 startApolloServer();
 
-console.log('yogcsds');
+console.log('yogcsrrds');
