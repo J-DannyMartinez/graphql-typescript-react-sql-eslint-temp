@@ -1,8 +1,9 @@
 'use strict';
 
 import express from 'express';
-import { ApolloServer, gql } from 'apollo-server-express';
-import { typeDefs, resolvers } from './model/schema/graph';
+import { ApolloServer } from 'apollo-server-express';
+import { typeDefs } from './model/graphql/schemas/typeDefs';
+import { resolvers } from './model/graphql/resolvers/resolvers';
 const morgan = require('morgan');
 
 const app: any = express();
@@ -23,5 +24,3 @@ async function startApolloServer() {
 }
 
 startApolloServer();
-
-console.log('yogcsrrrfds');
