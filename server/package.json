@@ -2,13 +2,12 @@
 	"name": "relx_test",
 	"version": "1.0.0",
 	"description": "",
-	"main": "index.js",
+	"main": "server.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"start": "node server.js",
-		"dev": "concurrently \"nodemon server.js\" \"npm run lint\"",
-		"lint": "eslint ./",
-		"ts": "tsc -w"
+		"dev": "nodemon server.js",
+		"ts": "tsc --project ./ -w"
 	},
 	"keywords": [],
 	"author": "",
@@ -18,11 +17,13 @@
 		"axios": "^0.21.1",
 		"concurrently": "^6.2.1",
 		"cors": "^2.8.5",
-		"express": "^4.17.1"
+		"express": "^4.17.1",
+		"graphql": "^15.5.1"
 	},
 	"devDependencies": {
 		"@graphql-eslint/eslint-plugin": "^2.0.1",
 		"@types/express": "^4.17.13",
+		"@types/graphql": "^14.5.0",
 		"@types/node": "^16.7.1",
 		"@typescript-eslint/eslint-plugin": "^4.29.2",
 		"@typescript-eslint/parser": "^4.29.2",
@@ -31,7 +32,7 @@
 		"eslint-config-airbnb-base": "^14.2.1",
 		"eslint-config-node": "^4.1.0",
 		"eslint-config-prettier": "^8.3.0",
-		"eslint-plugin-graphql": "github:apollographql/eslint-plugin-graphql",
+		"eslint-plugin-graphql": "^4.0.0",
 		"eslint-plugin-import": "^2.24.1",
 		"eslint-plugin-node": "^11.1.0",
 		"eslint-plugin-prettier": "^3.4.1",

@@ -1,12 +1,14 @@
 'use strict';
 
 import express from 'express';
-const { ApolloServer, gql } = require('apollo-server-express');
-const { typeDefs, resolvers } = require('./model/schema/graphql');
+import { ApolloServer, gql } from 'apollo-server-express';
+import { typeDefs, resolvers } from './model/schema/graph.js';
 const morgan = require('morgan');
 
-const app = express();
+const app: any = express();
 app.use(morgan('tiny'));
+
+const port: number = 4000;
 
 async function startApolloServer() {
 	const server = new ApolloServer({ typeDefs, resolvers });
@@ -15,11 +17,11 @@ async function startApolloServer() {
 	server.applyMiddleware({ app });
 
 	// eslint-disable-next-line prettier/prettier
-	await new Promise(resolve => app.listen({ port: 4000 }, resolve));
+	await new Promise(resolve => app.listen({ port }, resolve));
 	console.log(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`);
 	return { server, app };
 }
 
 startApolloServer();
 
-console.log('yos');
+console.log('yogcsds');
