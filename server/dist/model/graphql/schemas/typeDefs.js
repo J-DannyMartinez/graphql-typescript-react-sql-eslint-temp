@@ -1,10 +1,17 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.typeDefs = void 0;
 const apollo_server_express_1 = require("apollo-server-express");
-exports.typeDefs = (0, apollo_server_express_1.gql) `
+const typeDefs = (0, apollo_server_express_1.gql) `
+
+class User {
+  firstName: string;
+  lastName: string;
+  email: string;
+  pass: string;
+}
+
 	type Query {
-		hello: String
+		users: User
 	}
 `;
+module.exports = { typeDefs };
 //# sourceMappingURL=typeDefs.js.map

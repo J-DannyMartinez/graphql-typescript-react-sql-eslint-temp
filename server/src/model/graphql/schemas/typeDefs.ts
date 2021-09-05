@@ -1,6 +1,17 @@
 import { gql } from 'apollo-server-express';
-export const typeDefs = gql`
+
+const typeDefs = gql`
+
+class User {
+  firstName: string;
+  lastName: string;
+  email: string;
+  pass: string;
+}
+
 	type Query {
-		hello: String
+		users: User
 	}
 `;
+
+export = { typeDefs };
