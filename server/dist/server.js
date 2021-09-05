@@ -16,6 +16,7 @@ const express_1 = __importDefault(require("express"));
 const apollo_server_express_1 = require("apollo-server-express");
 const typeDefs_1 = require("./model/graphql/schemas/typeDefs");
 const resolvers_1 = require("./model/graphql/resolvers/resolvers");
+const client_1 = require("@prisma/client");
 const morgan = require('morgan');
 const app = (0, express_1.default)();
 app.use(morgan('tiny'));
@@ -30,5 +31,27 @@ function startApolloServer() {
         return { server, app };
     });
 }
+const prisma = new client_1.PrismaClient();
+function main() {
+    return __awaiter(this, void 0, void 0, function* () {
+        yield prisma.users.create({
+            data: {
+                first_name: 'Alice',
+                last_name: 'johnson',
+                email: 'alice@prisma.io',
+                password: '123456'
+            },
+        });
+        const allUsers = yield prisma.users.findMany();
+        console.log(allUsers);
+    });
+}
+main()
+    .catch((e) => {
+    throw e;
+})
+    .finally(() => __awaiter(void 0, void 0, void 0, function* () {
+    yield prisma.$disconnect();
+}));
 startApolloServer();
 //# sourceMappingURL=server.js.map
