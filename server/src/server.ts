@@ -1,26 +1,31 @@
 'use strict';
 
-import express from 'express';
+import 'reflect-metadata';
 import { ApolloServer } from 'apollo-server-express';
-// import { typeDefs } from './model/graphql/schemas/typeDefs';
-import { typeDefs, resolvers } from './model/graphql/resolvers/resolvers';
-const morgan = require('morgan');
+import express from 'express';
+import { buildSchema } from 'type-graphql';
+import { UserResolver } from './model/graphql/resolvers/user';
 
-const app: any = express();
-app.use(morgan('tiny'));
+const PORT = process.env.PORT || 4000;
 
-const port: number = 4000;
+const main = async () => {
+	try {
+		const app = express();
 
-async function startApolloServer() {
-	const server = new ApolloServer({ typeDefs, resolvers });
-	await server.start();
+		// Create the GraphQL server
+		const apolloServer = new ApolloServer({
+			schema: await buildSchema({
+				resolvers: [UserResolver]
+			})
+		});
 
-	server.applyMiddleware({ app });
+		apolloServer.applyMiddleware({ app });
 
-	// eslint-disable-next-line prettier/prettier
-	await new Promise(resolve => app.listen({ port }, resolve));
-	console.log(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`);
-	return { server, app };
-}
+		// Start the server
+		app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
+	} catch (err) {
+		console.error(err);
+	}
+};
 
-startApolloServer();
+main().catch(err => console.log(err));
