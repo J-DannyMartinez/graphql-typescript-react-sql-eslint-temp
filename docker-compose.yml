@@ -1,0 +1,34 @@
+version: "3"
+services:
+  server:
+    container_name: server-container
+    restart: always
+    build: ./server/
+    # environment:
+    # NODE_ENV: production
+    ports:
+      - "4000:4000"
+    depends_on:
+      - mysql
+  client:
+    container_name: client-container
+    restart: always
+    build: ./client/
+    # environment:
+    # NODE_ENV: production
+    ports:
+      - "3000:3000"
+    depends_on:
+      - server
+  mysql:
+    container_name: mysql-database
+    image: mysql
+    expose:
+      - "3307"
+    ports:
+      - "3307:3307"
+    volumes:
+      - mysqlTest:/data/db
+
+volumes:
+  mysqlTest:
